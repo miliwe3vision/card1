@@ -687,6 +687,10 @@ const startQRScanning = () => {
         const card: ExtractedCard = {
           ...response.card,
 
+          // Required by ExtractedCard type
+          job_title:
+            response.card.designation ?? null,
+
           /*
            * Prefer backend image URL if available.
            * Otherwise use the captured image.
