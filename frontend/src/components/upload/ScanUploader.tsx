@@ -46,7 +46,7 @@ interface ExtractedCard {
   facebook_url: string | null;
   linkedin_url: string | null;
 
-  source_type?: string;
+  source_type?: string | null;
   original_file_url?: string | null;
 
   /*
@@ -684,26 +684,61 @@ const startQRScanning = () => {
          * Until then, the local data URLs
          * are used for the review screen.
          */
-        const card: ExtractedCard = {
-          ...response.card,
+      const card: ExtractedCard = {
+        ...response.card,
 
-          // Required by ExtractedCard type
-          job_title:
-            response.card.designation ?? null,
+        // Normalize all required fields.
+        // This prevents "string | null | undefined"
+        // from conflicting with "string | null".
 
-          /*
-           * Prefer backend image URL if available.
-           * Otherwise use the captured image.
-           */
-          front_image_url:
-            response.card.front_image_url ||
-            frontPreview,
+        owner_name:
+          response.card.owner_name ?? null,
 
-          back_image_url:
-            response.card.back_image_url ||
-            backPreview,
-        };
+        job_title:
+          response.card.designation ?? null,
 
+        company_name:
+          response.card.company_name ?? null,
+
+        address:
+          response.card.address ?? null,
+
+        email:
+          response.card.email ?? null,
+
+        phone:
+          response.card.phone ?? null,
+
+        gst_number:
+          response.card.gst_number ?? null,
+
+        company_logo:
+          response.card.company_logo ?? null,
+
+        website_url:
+          response.card.website_url ?? null,
+
+        instagram_url:
+          response.card.instagram_url ?? null,
+
+        facebook_url:
+          response.card.facebook_url ?? null,
+
+        linkedin_url:
+          response.card.linkedin_url ?? null,
+
+        /*
+        * Prefer backend image URL if available.
+        * Otherwise use the captured image.
+        */
+        front_image_url:
+          response.card.front_image_url ??
+          frontPreview,
+
+        back_image_url:
+          response.card.back_image_url ??
+          backPreview,
+      };
 
         /*
          * Save complete card information.
