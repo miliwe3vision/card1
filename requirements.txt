@@ -1,1 +1,24 @@
--r backend/requirements.txt
+fastapi
+uvicorn[standard]
+python-multipart
+
+pydantic
+pydantic-settings
+python-dotenv
+
+supabase
+google-genai
+
+opencv-python-headless
+numpy
+Pillow
+PyMuPDF
+pyzbar
+
+httpx
+requests
+beautifulsoup4
+playwright
+tavily-python
+
+PyJWT
