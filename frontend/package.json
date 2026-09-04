@@ -2,12 +2,13 @@
   "name": "card-scanner-frontend",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "node .next/standalone/server.js",
-    "type-check": "tsc --noEmit"
-  },
+ "scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "postbuild": "node scripts/copy-standalone-assets.mjs",
+  "start": "node .next/standalone/server.js",
+  "type-check": "tsc --noEmit"
+},
   "dependencies": {
     "@supabase/supabase-js": "^2.109.0",
     "clsx": "^2.1.1",
