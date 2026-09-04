@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply antialiased text-gray-900;
+  }
+
+  /* Safer touch targets on mobile */
+  button,
+  a {
+    touch-action: manipulation;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Safe area padding for notched phones */
+  .safe-pb {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .safe-pt {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
